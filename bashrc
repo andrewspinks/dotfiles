@@ -57,14 +57,15 @@ bind "set completion-ignore-case on" # note: bind used instead of sticking these
 bind "set bell-style none" # no bell
 bind "set show-all-if-ambiguous On" # show list automatically, without double tab
 
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
 # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-
 # Prompts ----------------------------------------------------------
-if [ -f /usr/local/bin/git-completion.bash ]; then source /usr/local/bin/git-completion.bash; fi # for Git completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then source `brew --prefix`/etc/bash_completion; fi # for Git completion
 #export PS1="\[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path
 # export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path
 export PS1="\[\033[01;32m\]\w\[\033[00;33m\]\$(__git_ps1 \" (%s)\") \[\033[01;36m\]\$\[\033[00m\] "
@@ -211,7 +212,7 @@ function g
 }
 
 # Source autoenv to auto load .env files
-source /usr/local/opt/autoenv/activate.sh
+# source /usr/local/opt/autoenv/activate.sh
 
 # tmux related
 alias tmux="tmux -2 $@"

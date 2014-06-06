@@ -37,8 +37,15 @@
 [core]
 	edit = vi
 	editor = /usr/bin/vim
+ excludesfile = /opt/boxen/config/git/gitignore
 
 [init]
 	templatedir = ~/.git_template
 [http]
 	sslVerify = false
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
